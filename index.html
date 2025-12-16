@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimation des objets</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000, #FFD700, #000000);
+            color: #FFD700;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            padding: 50px;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #FFD700;
+            background: #000;
+            color: #FFD700;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background: #FFA500;
+        }
+        #resultat {
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estimation des objets</h1>
+    <p>Entrez le code de l'objet :</p>
+    <input type="text" id="codeInput" placeholder="Entrez le code">
+    <button onclick="valider()">Valider</button>
+    <p id="resultat"></p>
+
+    <script>
+        function valider() {
+            const code = document.getElementById('codeInput').value;
+            let message = '';
+            if (code === '1234') {
+                message = 'l\'objet vaut 5€';
+            } else if (code === '4321') {
+                message = 'L\'objet vaut 10€';
+            } else {
+                message = 'l\'objet n\'est pas répertorié';
+            }
+            document.getElementById('resultat').textContent = message;
+        }
+    </script>
+</body>
+</html>

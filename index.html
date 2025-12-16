@@ -106,19 +106,44 @@
     <h1>Estimation des objets</h1>
     <p>Entrez le code de l'objet :</p>
     <input type="text" id="codeInput" placeholder="Entrez le code">
+    <p>Code de l'orfèvre :</p>
+    <input type="text" id="orfèvreCode" placeholder="Entrez le code de l'orfèvre">
+    <p id="valeurLabel" style="display:none;">Entrez la valeur souhaitée :</p>
+    <input type="text" id="valeurInput" style="display:none;" placeholder="Entrez la valeur">
     <button onclick="valider()">Valider</button>
     <p id="resultat"></p>
 
     <script>
         function valider() {
+            const orfèvre = document.getElementById('orfèvreCode').value;
             const code = document.getElementById('codeInput').value;
+            const valeurInput = document.getElementById('valeurInput');
+            const valeurLabel = document.getElementById('valeurLabel');
             let message = '';
-            if (code === '1234') {
-                message = 'l\'objet vaut 5€';
-            } else if (code === '4321') {
-                message = 'L\'objet vaut 10€';
+
+            if (orfèvre === 'estimationreel') {
+                valeurLabel.style.display = 'none';
+                valeurInput.style.display = 'none';
+                if (code === '1234') {
+                    message = 'l\'objet vaut 5€';
+                } else if (code === '4321') {
+                    message = 'L\'objet vaut 10€';
+                } else {
+                    message = 'l\'objet n\'est pas répertorié';
+                }
+            } else if (orfèvre === 'fausseestimation') {
+                valeurLabel.style.display = 'block';
+                valeurInput.style.display = 'block';
+                const valeur = valeurInput.value;
+                if (valeur) {
+                    message = 'l\'objet vaut ' + valeur + '€';
+                } else {
+                    message = 'Veuillez entrer une valeur souhaitée.';
+                }
             } else {
-                message = 'l\'objet n\'est pas répertorié';
+                valeurLabel.style.display = 'none';
+                valeurInput.style.display = 'none';
+                message = 'Code de l\'orfèvre invalide.';
             }
             document.getElementById('resultat').textContent = message;
         }

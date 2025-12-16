@@ -131,6 +131,7 @@
                 } else {
                     message = 'l\'objet n\'est pas répertorié';
                 }
+                document.getElementById('orfèvreCode').value = '';
             } else if (orfèvre === 'fausseestimation') {
                 valeurLabel.style.display = 'block';
                 valeurInput.style.display = 'block';
@@ -140,7 +141,6 @@
                     message = 'l\'objet vaut ' + valeur + '€';
                     valeurLabel.style.display = 'none';
                     valeurInput.style.display = 'none';
-                    document.getElementById('orfèvreCode').value = '';
                 } else {
                     message = 'Veuillez entrer une valeur souhaitée.';
                 }
